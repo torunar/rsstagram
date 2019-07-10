@@ -1,0 +1,88 @@
+{
+  "name": "torunar/rsstagram",
+  "license": "UNLICENSE",
+  "authors": [
+    {
+      "name": "Mike Schekotov",
+      "email": "torunar@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "rss-bridge/rss-bridge",
+        "version": "2019.7.6",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/RSS-Bridge/rss-bridge.git",
+          "reference": "2019-07-06"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "rss-bridge/rss-bridge": "2019.7.6",
+    "ext-mbstring": "*",
+    "ext-curl": "*",
+    "ext-openssl": "*",
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
+    "ext-json": "*",
+    "ext-dom": "*"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "chmod +x bin/rsstagram"
+    ],
+    "post-update-cmd": [
+      "chmod +x bin/rsstagram"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "RssTagram\\": [
+        "src"
+      ]
+    },
+    "files": [
+      "src/bootstrap.php",
+
+      "vendor/rss-bridge/rss-bridge/lib/ActionInterface.php",
+      "vendor/rss-bridge/rss-bridge/lib/BridgeInterface.php",
+      "vendor/rss-bridge/rss-bridge/lib/CacheInterface.php",
+      "vendor/rss-bridge/rss-bridge/lib/FormatInterface.php",
+
+      "vendor/rss-bridge/rss-bridge/lib/FactoryAbstract.php",
+      "vendor/rss-bridge/rss-bridge/lib/FeedItem.php",
+      "vendor/rss-bridge/rss-bridge/lib/Debug.php",
+      "vendor/rss-bridge/rss-bridge/lib/Exceptions.php",
+      "vendor/rss-bridge/rss-bridge/lib/FormatFactory.php",
+      "vendor/rss-bridge/rss-bridge/lib/FormatAbstract.php",
+      "vendor/rss-bridge/rss-bridge/lib/BridgeFactory.php",
+      "vendor/rss-bridge/rss-bridge/lib/BridgeAbstract.php",
+      "vendor/rss-bridge/rss-bridge/lib/FeedExpander.php",
+      "vendor/rss-bridge/rss-bridge/lib/CacheFactory.php",
+      "vendor/rss-bridge/rss-bridge/lib/Authentication.php",
+      "vendor/rss-bridge/rss-bridge/lib/Configuration.php",
+      "vendor/rss-bridge/rss-bridge/lib/BridgeCard.php",
+      "vendor/rss-bridge/rss-bridge/lib/BridgeList.php",
+      "vendor/rss-bridge/rss-bridge/lib/ParameterValidator.php",
+      "vendor/rss-bridge/rss-bridge/lib/ActionFactory.php",
+      "vendor/rss-bridge/rss-bridge/lib/ActionAbstract.php",
+
+      "vendor/rss-bridge/rss-bridge/lib/html.php",
+      "vendor/rss-bridge/rss-bridge/lib/error.php",
+      "vendor/rss-bridge/rss-bridge/lib/contents.php",
+
+      "vendor/rss-bridge/rss-bridge/vendor/simplehtmldom/simple_html_dom.php",
+      "vendor/rss-bridge/rss-bridge/vendor/php-urljoin/src/urljoin.php",
+
+      "vendor/rss-bridge/rss-bridge/bridges/InstagramBridge.php"
+    ]
+  },
+  "bin": [
+    "bin/rsstagram"
+  ]
+}

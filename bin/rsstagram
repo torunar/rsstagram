@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+use RssTagram\Config;
+use RssTagram\Reader;
+use RssTagram\Writer;
+use RssTagram\Application;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+try {
+    if ($argc < 2) {
+        throw new InvalidArgumentException('Config file path not specified');
+    }
+    if ($argc < 3) {
+        throw new InvalidArgumentException('Output file path not specified');
+    }
+
+    list(, $configPath, $outputPath) = $argv;
+    if (!file_exists($configPath)) {
+        throw new InvalidArgumentException('Config file not found');
+    }
+    if (file_exists($outputPath) && !is_writable($outputPath) || !is_writable(dirname($outputPath))) {
+        throw new InvalidArgumentException('Output file is not writable');
+    }
+
+    $appConfig = Config::fromJson(file_get_contents($configPath));
+
+    Configuration::loadConfiguration();
+    $actionFactory = new ActionFactory;
+    $actionFactory->setWorkingDir(PATH_LIB_ACTIONS);
+    /** @var DisplayAction $displayAction */
+    $displayAction = $actionFactory->create('display');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+    exit(-1);
+}
+
+$app = new Application(
+    $appConfig,
+    new Reader(new DOMDocument('1.0', 'UTF-8')),
+    new Writer(new DOMDocument('1.0', 'UTF-8')),
+    $displayAction
+);
+
+$rss = $app->run();
+file_put_contents($outputPath, $rss);
+exit(0);
