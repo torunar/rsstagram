@@ -13,14 +13,7 @@ Instagram feed aggregator, built on top of the [RSS-Bridge](https://github.com/R
 2. Set up sources in the configuration file, filling the `sources` array with Instagram usernames:
 
     ```
-    ...
-    "sources": [
-      "hideo_kojima",
-      "thisisbillgates",
-      "elonmusk",
-      ...
-    ]
-    ...
+    "sources": ["hideo_kojima", "thisisbillgates", "elonmusk", ...]
     ```
 
 3. Optionally, set the desired title, link and description of your aggregate RSS feed.
