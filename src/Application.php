@@ -74,6 +74,7 @@ class Application
             'bridge' => 'Rsstagram',
             'format' => 'Mrss',
             'u'      => $username,
+            'direct_links' => true,
         ]);
 
         try {

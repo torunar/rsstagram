@@ -12,18 +12,18 @@
       "type": "package",
       "package": {
         "name": "rss-bridge/rss-bridge",
-        "version": "2019.7.6",
+        "version": "2019.12.1",
         "source": {
           "type": "git",
           "url": "https://github.com/RSS-Bridge/rss-bridge.git",
-          "reference": "2019-07-06"
+          "reference": "2019-12-01"
         }
       }
     }
   ],
   "require": {
     "php": ">=7.2",
-    "rss-bridge/rss-bridge": "2019.7.6",
+    "rss-bridge/rss-bridge": "2019.12.1",
     "ext-mbstring": "*",
     "ext-curl": "*",
     "ext-openssl": "*",

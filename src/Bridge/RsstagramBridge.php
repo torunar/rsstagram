@@ -11,6 +11,7 @@ class RsstagramBridge extends \InstagramBridge
 
         array_walk($this->items, function (&$item) {
             $item['title'] = '@' . $item['author'];
+            $item['content'] = html_entity_decode($item['content']);
         });
     }
 }
